@@ -19,7 +19,7 @@ class CommentInputContainer extends Component {
   }
 
   _loadUsername () {
-    const username = localStorage.getItem('username')
+    const username = (localStorage.getItem('username')).replace(/"/g, '')
     if (username) {
       this.setState({ username })
     }
@@ -47,7 +47,7 @@ class CommentInputContainer extends Component {
       <CommentInput
         username={this.state.username}
         onUserNameInputBlur={this._saveUsername.bind(this)}
-        onSubmit={this.handleSubmitComment.bind(this)} />
+        onAddComment={this.handleSubmitComment.bind(this)} />
     )
   }
 }
